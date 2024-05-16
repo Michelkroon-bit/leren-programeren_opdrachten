@@ -1,0 +1,20 @@
+PRIJS_OLIBOL=99
+PRIJS_10_OLIBOLLEN =750
+AANTAL_OLIBOL=12
+HOEVEEL_10 = AANTAL_OLIBOL //10 
+HOEVEEL_1 = AANTAL_OLIBOL %1
+
+
+PRIJS_APPELFLAP=1.49
+AANTAL_APPELFLAP=2
+
+totaal_olibol = AANTAL_OLIBOL %1 * PRIJS_OLIBOL + AANTAL_OLIBOL //10 * PRIJS_10_OLIBOLLEN
+totaal_appelflap = AANTAL_APPELFLAP * PRIJS_APPELFLAP
+totaal_bedrag= totaal_olibol 
+
+prijs_12_olibollen = PRIJS_10_OLIBOLLEN and (PRIJS_OLIBOL*2)
+
+
+print(f'totaal {AANTAL_OLIBOL} olibollen = {totaal_olibol /100} ')
+print(f'totaal {AANTAL_APPELFLAP} appelflap = {totaal_appelflap /100}')
+print(f'totaal_bedrag: {totaal_bedrag/100}')

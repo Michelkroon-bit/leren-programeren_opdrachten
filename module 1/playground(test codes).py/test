@@ -1,0 +1,19 @@
+# length = len(str("6.17"))
+# print(type(length))
+
+
+# result = '12.4 - 5'
+# print (result)
+
+
+# uitkomst = '6.34' + int('555')
+# print(uitkomst)
+
+# # float('555')
+# # print (float('555'))
+
+uitkomst2 = 36/4
+print(uitkomst2)
+
+
+c=a+b
