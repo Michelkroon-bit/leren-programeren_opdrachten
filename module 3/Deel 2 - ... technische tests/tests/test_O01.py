@@ -16,7 +16,7 @@ files = [
 
 for filepath in files:
     result = os.path.exists(basepath+'/'+filepath)
-    test(filepath+' exsits',True, result)
+    test(filepath+' exsits',True, result)x
 
 if __name__ == "__main__":
     report()

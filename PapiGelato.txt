@@ -1,0 +1,67 @@
+import os
+import sys
+import time
+from coole_dingetjes import typemachine_print
+
+
+display('start programma')
+time.sleep(1)
+display('Welkom bij Papi Gelato je mag alle smaken kiezen zo lang het maar vanille ijs is\n')
+    
+time.sleep(0.5)
+function bestel_progress():
+    bool_value is True
+    while bool_value is equal to True:
+        display("hoeveel bolletjes wilt u?\n")
+        try: 
+            hoeveel_bolletjes = INT(INPUT(""))
+            if hoeveel_bolletjes equal or higher than 1 and hoeveel_bolletjes Lower or equal to 3:
+                display(f"Wilt u deze {hoeveel_bolletjes} bolletje(s) in een hoornt je of een bakje?\n")
+                hoorntje_of_bakje = INT(INPUT(''))
+                bool_value = False
+                if hoorntje_of_bakje in ('hoorntje' , 'Hoorntje'):
+                    display(f"Hier is uw hoorntje met {hoeveel_bolletjes} bolletjes")
+                    time.sleep(0.5)
+                    display(f"wilt u nog iets bestellen? ")
+                    nog_iets_bestellen = INPUT("")
+                    if nog_iets_bestellen in ('j','J','JA','ja','Ja'):
+                        bestel_progress()
+                    elif nog_iets_bestellen in ('N','n','NEE','nee','Nee'):
+                        display("Bedankt en tot ziens")
+                        
+                        
+                elif hoorntje_of_bakje in ('Bakje' , 'bakje'):
+                    display(f"Hier is uw bakje met {hoeveel_bolletjes} bolletjes")
+                    time.sleep(0.5)
+                    display(f"wilt u nog iets bestellen?")
+                    nog_iets_bestellen = INPUT("")
+                    if nog_iets_bestellen in ('j','J','JA','ja','Ja'):
+                        bestel_progress()
+                    elif nog_iets_bestellen in ('N','n','NEE','nee','Nee'):
+                        display("Bedankt en tot ziens")
+
+
+
+            elif hoeveel_bolletjes is higher or equal to 4 and hoeveel_bolletjes Lower or equal to 8:
+                display(f"Dan krijgt u van mij een bakje met {hoeveel_bolletjes} bolletjes\n")
+                bool_value = False
+                display(f"wilt u nog iets bestellen?")
+                nog_iets_bestellen = INPUT("")
+                if nog_iets_bestellen in ('j','J','JA','ja','Ja'):
+                    bestel_progress()
+                elif nog_iets_bestellen in ('N','n','NEE','nee','Nee'):
+                    display("Bedankt en tot ziens")
+            
+            
+            
+            elif hoeveel_bolletjes >8:
+                display(f"Sorry , zulke grote bakken hebben we niet\n")
+                
+                
+                
+            else:
+                display("Sorry dat begrijp ik niet\n")
+        catch ValueError:
+            display('Je moet wel een getal invullen\n')
+            
+bestel_progress()

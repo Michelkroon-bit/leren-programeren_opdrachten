@@ -57,30 +57,6 @@ print(f'|                    Totaal: €{totaal}')
 print('------------------------------------')
 print(Fore.RED + 'bedankt voor het bestellen bij pizzaria')
 
-# --> print de 1e output <-- #
-# def pizza_output():
-#     for x in uiteindelijke_bestelling:
-#         print(f"|Prijs kleine pizza's: {x * PIZZAS['klein']} Euro   |")
-#         print(f"|Prijs middel pizza's: {x * PIZZAS['middel']} Euro   |")
-#         print(f"|Prijs grootte pizza's: {x * PIZZAS['groot']} Euro  |")   
-#         break
-
-
-# --> totaal berekenen <-- #
-
-
-
-
-
-# --> output <-- #
-
-# print('**************Pizzaria**************')
-# hoeveelheid = pizza_output()             
-# print('|----------------------------------|')
-# print(f'|                    Btw prc:   {BTW_GEHALTE}%|')
-# print(f'|                    Totaal: €{uitkomst}|')
-# print('------------------------------------')
-# print(Fore.RED + 'bedankt voor het bestellen bij pizzaria')
 
 #gebruikt gemaakt van 
 #dict
