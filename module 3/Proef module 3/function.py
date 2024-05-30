@@ -1,6 +1,12 @@
+
 from data import *
 import sys
 import time
+import sys
+import time
+from colorama import init
+from termcolor import colored
+
 
 
 def typemachine_print (prompt):
@@ -12,7 +18,58 @@ def typemachine_print (prompt):
 
 
 
-#--> vraag om hoeveelheid bolletjes <--#
+
+#############################################ZAKELIJKE KLANT############################################
+
+def get_aantal_liters_zakelijk() -> int:
+    while True:
+        try:
+            typemachine_print('hoeveel liter ijs wilt u hebben? \n')
+            hoeveel_liter = int(input())
+            if hoeveel_liter >= 1 and hoeveel_liter <= 8:
+                return hoeveel_liter
+            
+            elif hoeveel_liter < 1:
+                typemachine_print(f"{U_MOET_WEL_EEN_GETAL_BOVEN_DE_0_INVOEREN}\n")
+                
+            else:
+                typemachine_print(f"{SORRY_ZULKE_GROOTTE_BAKJES_VERKOPEN_WIJ_NIET}\n")
+        except ValueError:
+            typemachine_print('Je moet wel een getal invullen\n')
+        return hoeveel_liter
+
+
+
+def get_smaak_zakelijk(int_hoeveel_liter) -> list:
+    keuze = 1
+    smaken_lijst =[]
+    while keuze <= int_hoeveel_liter:
+        
+        typemachine_print(f'Welke smaak wilt u voor bak nummer {keuze}? \nA) Aardbei \nC) Chocolade \n V) Vanille?\n')
+        welke_smaak_wilt_u = input("")
+        
+        if welke_smaak_wilt_u.upper() == "A":
+            smaken_lijst.append("Aardbei")
+            keuze +=1 
+            
+        
+        elif welke_smaak_wilt_u.upper() == "C":
+            smaken_lijst.append("Chocolade")
+            keuze +=1 
+            
+        
+        elif welke_smaak_wilt_u.upper() == "V":
+            smaken_lijst.append("Vanille")
+            keuze +=1 
+            
+        else:
+            print(SORRY_IK_BEGRIJP_HET_NIET)
+    return smaken_lijst
+
+
+
+#################################################GEWONE KLANT##########################################
+#vragen voor de gewone klant
 def vraag_hoeveel_bolletjes () -> int:
     while True:
         try:
@@ -30,79 +87,104 @@ def vraag_hoeveel_bolletjes () -> int:
             typemachine_print('Je moet wel een getal invullen\n')
 
 
-def get_smaken(int_aantal_bolletjes) :
+
+
+#vragen voor de gewone klant
+def get_hoorntje_of_bakje(hoeveel_bolletjes) -> str:
+    while True:
+        if hoeveel_bolletjes >=1 and hoeveel_bolletjes <=3:
+            typemachine_print(f"Wilt u deze {hoeveel_bolletjes} bolletje(s) in een hoorntje of een bakje?\n")
+            keuze = input()
+            
+            if keuze.lower() in ("hoorntje" , "bakje"):
+
+                return keuze.lower() 
+                    
+            else:
+                typemachine_print(f"{SORRY_IK_BEGRIJP_HET_NIET}\n")
+        
+
+        elif hoeveel_bolletjes >=4 and hoeveel_bolletjes <=8:
+            return 'bakje'
+        else:
+            print(SORRY_IK_BEGRIJP_HET_NIET)
+
+
+
+#vragen voor de gewone klant
+def get_smaken(int_aantal_bolletjes) -> list:
     smaken_lijst =[]
     keuze = 1
     while keuze <= int_aantal_bolletjes:
-        typemachine_print(f'Welke smaak wilt u voor bolletje nummer {keuze}? \nA) Aardbei \nC) Chocolade \nM) Munt \nV) Vanille?\n')
+        
+        typemachine_print(f'Welke smaak wilt u voor bolletje nummer {keuze}? \nA) Aardbei \nC) Chocolade \nV) Vanille?\n')
         welke_smaak_wilt_u = input("")
         
         if welke_smaak_wilt_u.upper() == "A":
             smaken_lijst.append("Aardbei")
+            keuze +=1 
             
+        
         elif welke_smaak_wilt_u.upper() == "C":
             smaken_lijst.append("Chocolade")
+            keuze +=1 
             
-        elif welke_smaak_wilt_u.upper() == "M":
-            smaken_lijst.append("Munt")
             
         elif welke_smaak_wilt_u.upper() == "V":
             smaken_lijst.append("Vanille")
-
+            keuze +=1 
+            
         else:
             print(SORRY_IK_BEGRIJP_HET_NIET)
-        
-        keuze +=1 
-        
     return smaken_lijst
     
 
-#--> check of je moet vragen om een bakje of hoorntje of als je een bakje moet geven <--#
-def get_hoorntje_of_bakje(hoeveel_bolletjes):
-    if hoeveel_bolletjes >=1 and hoeveel_bolletjes <=3:
-        typemachine_print(f"Wilt u deze {hoeveel_bolletjes} bolletje(s) in een hoorntje of een bakje?\n")
-        keuze = input()
-        
-        if keuze.lower() in ("hoorntje" , "bakje"):
 
-            return keuze.lower() 
-                
-        else:
-            typemachine_print(f"{SORRY_IK_BEGRIJP_HET_NIET}\n")
+#vragen voor de gewone klant
+def get_toppings(int_aantal_bolletjes) -> str:
     
+    typemachine_print(f'Wat voor topping wilt u: \nA) Geen \nB) Slagroom \nC) Sprinkels  \nD) Caramel Saus \n')
+    welke_topping_wilt_u = input("")
+    if welke_topping_wilt_u.upper() == "A":
+        typemachine_print('Geen toppings dus oke..')
+        return ""
 
-    elif hoeveel_bolletjes >=4 and hoeveel_bolletjes <=8:
-        return 'bakje'
-
-
-def get_toppings(int_aantal_bolletjes):
-    topping_lijst =[]
-    keuze = 1
-    while keuze <= int_aantal_bolletjes:
-        typemachine_print(f'Wat voor topping wilt u: \nA) Geen, \nB) Slagroom, \nC) Sprinkels  \nD) Caramel Saus?\n')
-        welke_topping_wilt_u = input("")
-        if welke_topping_wilt_u.upper() == "A":
-            typemachine_print('Geen toppings dus oke..')
-            return False
-        elif welke_topping_wilt_u.upper() == "B":
-            topping_lijst.append("Slagroom")
-            return True
-        elif welke_topping_wilt_u.upper() == "C":
-            topping_lijst.append("Sprinkels")
-            return True
-        elif welke_topping_wilt_u.upper() == "D":
-            topping_lijst.append("Caramel Saus")
-            return True
-# -->voeg alle values uit de functies hierboven toe als dict aan de lijst <--#
-def get_bestelling ():
-    hoeveel_bolletjes = vraag_hoeveel_bolletjes()
-    welke_smaken = get_smaken(hoeveel_bolletjes)
-    get_hoorntje = get_hoorntje_of_bakje(hoeveel_bolletjes)
-    get_topping = get_toppings(hoeveel_bolletjes)
-    bestelde_items = {
-    "ijsje": hoeveel_bolletjes ,
-    "bakje/hoorntje": get_hoorntje,
-    "smaak": welke_smaken,
-    "topping": get_topping
-    }
-    return bestelde_items
+    elif welke_topping_wilt_u.upper() == "B":
+        return "Slagroom"
+        
+    elif welke_topping_wilt_u.upper() == "C":
+        return "Sprinkels"
+        
+    elif welke_topping_wilt_u.upper() == "D":
+        return "Caramel Saus"
+    else:
+        typemachine_print(SORRY_IK_BEGRIJP_HET_NIET)
+    
+        
+#bestelling voor het bedrijf
+def get_bestelling_bedrijf() -> dict:
+        hoeveel_liter = get_aantal_liters_zakelijk()
+        smaken_zakelijk = get_smaak_zakelijk(hoeveel_liter)
+        bestelde_items = {
+        "ijsje": hoeveel_liter ,
+        "smaak": smaken_zakelijk,
+        "btw": 6
+        }
+        
+        return bestelde_items
+        
+        
+#bestelling voor de klant
+def get_bestelling () -> dict:
+        hoeveel_bolletjes = vraag_hoeveel_bolletjes()
+        get_hoorntje = get_hoorntje_of_bakje(hoeveel_bolletjes)
+        welke_smaken = get_smaken(hoeveel_bolletjes)
+        get_topping = get_toppings(hoeveel_bolletjes)
+        bestelde_items = {
+        "ijsje": hoeveel_bolletjes ,
+        "bakje/hoorntje": get_hoorntje,
+        "smaak": welke_smaken,
+        "topping": get_topping
+        }
+        return bestelde_items
+            # -->voeg alle values uit de functies hierboven toe als dict aan de lijst <--#
